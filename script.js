@@ -1,12 +1,22 @@
-const options = {
-	method: 'GET',
-	headers: {
-		'X-RapidAPI-Key': 'bc317b08f8mshe026350a421c15ap14c8cbjsnce19fe98d2d2',
-		'X-RapidAPI-Host': 'weather-by-api-ninjas.p.rapidapi.com'
-	}
-};
 
-fetch('https://weather-by-api-ninjas.p.rapidapi.com/v1/weather?city=Delhi', options)
-	.then(response => response.json())
-	.then(response => console.log(response))
-	.catch(err => console.error(err));  
+
+const searchCity = async () => {
+	const city = document.getElementById('city-input').value; 
+	console.log(city) 
+	const data = await getWeather(city)
+	showWeatherData(data)
+}
+ 
+const getWeather = (city) => {
+	return fetch(
+		`https://api.openweathermap.org/data/2.5/weather?q=${city}+&appid=cbe3dd267a18f6c89943b3eff94f1ed7&units=metric`
+	  )
+		.then((response) => response.json())
+		.then((data) => data)
+		.catch((err) => console.error(err));
+}
+
+const showWeatherData = (weatherData) => {
+	console.log(weatherData)
+	document.getElementById('temp').innerText = weatherData.main.temp 
+}
