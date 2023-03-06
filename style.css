@@ -18,16 +18,14 @@ input{
     border-radius: 30px;
     border: white;
     font-size: 16px;
-    
 }
 #input{
     text-align: center;
 }
 .button{
     text-align: center;
-   
 }
-.button:hover{
+#search-button:hover{
     transform: scale(1.2);
 }
 #search-button{
